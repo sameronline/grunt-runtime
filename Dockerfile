@@ -9,8 +9,7 @@ FROM library/node
 MAINTAINER Samer Ali (samer@sameronline.com)
 
 # Install Bower & Grunt
-RUN npm install -g bower grunt-cli && \
-    echo '{ "allow_root": true }' > /root/.bowerrc
+RUN npm install -g grunt-cli
 
 # Set instructions on build.
 ONBUILD ADD package.json /app/
@@ -18,6 +17,7 @@ ONBUILD RUN npm install
 
 # Define working directory.
 WORKDIR /app
+VOLUME /app
 
 # Define default command.
 CMD ["grunt", "watch"]
