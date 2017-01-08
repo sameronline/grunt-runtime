@@ -1,11 +1,12 @@
 #
-# Node.js w/ Bower & Grunt runtime Dockerfile
+# Grunt runtime Dockerfile
 #
-# https://github.com/DigitallySeamless/nodejs-bower-grunt-runtime
+# https://github.com/sameronline/grunt-runtime
 #
 
 # Pull base image.
 FROM library/node
+MAINTAINER Samer Ali (samer@sameronline.com)
 
 # Install Bower & Grunt
 RUN npm install -g bower grunt-cli && \
@@ -19,7 +20,7 @@ ONBUILD RUN npm install
 WORKDIR /app
 
 # Define default command.
-CMD ["bash"]
+CMD ["grunt", "watch"]
 
-# Expose ports.
-EXPOSE 8080
+# Expose default livereload port
+EXPOSE 35729
